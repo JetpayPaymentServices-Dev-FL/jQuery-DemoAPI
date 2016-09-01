@@ -118,16 +118,18 @@ $( 'form' ).submit(function( event ) {
 console.log(JSON.stringify(vtPostTransaction));
 $.ajax({
     type: 'POST',
-    url: 'https://stage.collectorsolutions.com/magic-api/api/virtualtransaction/post',
-    dataType:"json",
+     crossOrigin: true,
+    headers: { 
+    'Accept': 'application/json',
+    'Content-Type': 'application/json' 
+    },
+    url: 'https://stage.collectorsolutions.com/magic-api/api/transaction/redirect',
+    dataType:'json',
     data: JSON.stringify(vtPostTransaction),
     contentType: 'application/json; charset=utf-8',
-    crossDomain: true,
     success: function(data, status, jqXHR) { 
 	      console.log(data)
         $('.loader').fadeOut('slow');
-       //console.log('https://stage.collectorsolutions.com/magic-ui/virtualterminal/\'+clientName+\'/\'+data.transactionIdentifier', 'anything');
-       //https://stage.collectorsolutions.com/magic-ui/VirtualTerminal/csi-live/
        window.location.replace('https://stage.collectorsolutions.com/magic-ui/VirtualTerminal/'+clientName+'/'+data.transactionIdentifier);
     },
     error: function (jqXHR, status) {            
@@ -147,7 +149,12 @@ $.ajax({
 console.log(JSON.stringify(vtGetTransaction));
 $.ajax({
     type: 'POST',
-    url: 'https://stage.collectorsolutions.com/magic-api/api/virtualtransaction/get',
+     crossOrigin: true,
+     headers: { 
+      'Accept': 'application/json',
+      'Content-Type': 'application/json' 
+      },
+    url: 'https://stage.collectorsolutions.com/magic-api/api/transaction/redirect',
     data: JSON.stringify(vtGetTransaction),
     contentType: 'application/json; charset=utf-8',
     crossDomain: true,
