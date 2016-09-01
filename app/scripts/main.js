@@ -36,6 +36,9 @@ $( '.btnGenerate' ).click(function( event ) {
       }
 });
  event.preventDefault();
+  $('.loader').fadeIn(function () {
+        $(this).delay(300).fadeOut();
+    });
 });
 function populateRandomData(obj){
      $('.amountSub').val(generateAmount());
@@ -109,21 +112,23 @@ $( 'form' ).submit(function( event ) {
     }
   ],
   'urlSilentPost': '',
-  'urlReturnPost': 'http://www.collectorsolutions.com'
+  'urlReturnPost': ''
 }
 //test values to see what we are passing up//
 console.log(JSON.stringify(vtPostTransaction));
 $.ajax({
     type: 'POST',
     url: 'https://stage.collectorsolutions.com/magic-api/api/virtualtransaction/post',
+    dataType:"json",
     data: JSON.stringify(vtPostTransaction),
     contentType: 'application/json; charset=utf-8',
     crossDomain: true,
-    dataType:"jsonp",
     success: function(data, status, jqXHR) { 
-	      $('.loader').fadeOut('slow');
-       console.log('https://stage.collectorsolutions.com/magic-ui/virtualterminal/\'+clientName+\'/\'+data.transactionIdentifier', 'anything');
-       window.location.replace('https://stage.collectorsolutions.com/magic-ui/virtualterminal/'+clientName+'/'+data.transactionIdentifier);
+	      console.log(data)
+        $('.loader').fadeOut('slow');
+       //console.log('https://stage.collectorsolutions.com/magic-ui/virtualterminal/\'+clientName+\'/\'+data.transactionIdentifier', 'anything');
+       //https://stage.collectorsolutions.com/magic-ui/VirtualTerminal/csi-live/
+       window.location.replace('https://stage.collectorsolutions.com/magic-ui/VirtualTerminal/'+clientName+'/'+data.transactionIdentifier);
     },
     error: function (jqXHR, status) {            
         $('.loader').fadeOut('slow');
