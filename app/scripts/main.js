@@ -8,7 +8,7 @@ var clientName = 'csi-live',
     $('.clientIDSub').val(clientID);
     $('.paymentIDSub').val(paymentTypeAPIName);
     $('i').tooltip();
-    $("#currentYear").text( (new Date).getFullYear() );
+    $('#currentYear').text( (new Date).getFullYear() );
 //client guid generation, please do not use for production (demo only). Server should be used to produce true guid//
 var uiid = guid();
 $( '.transactionSub' ).text(uiid);
