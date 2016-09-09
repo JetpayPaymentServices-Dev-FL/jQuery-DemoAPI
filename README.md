@@ -13,8 +13,7 @@
 - Run `gulp serve:dist` to preview the production build
 
 
-## Docs
-* [getting the CSI azure ftp profile settings](http://confluence.csi.int:8090/x/OIMSAQ) so that you can ftp (global water, fathom only). Create additional web apps for other clients, it's free.
+## docs
 * [getting started](https://github.com/yeoman/generator-webapp/blob/master/README.md) with this generator
 
 ## Features
